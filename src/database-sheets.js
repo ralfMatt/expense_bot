@@ -382,13 +382,8 @@ async function addExpense(name, amount, categoryId, userId, date = null) {
       range: `${CATEGORIES_SHEET}!A:C`,
     });
     
-    let categoryName = `Category ${categoryId}`;
-    if (categoriesResponse.data.values) {
-      const categoryRow = categoriesResponse.data.values.find(row => row[0] == categoryId);
-      if (categoryRow && categoryRow[1]) {
-        categoryName = categoryRow[1];
-      }
-    }
+    // Store the category ID number, not the name
+    const categoryName = categoryId;
     
     // Get next ID
     const response = await sheets.spreadsheets.values.get({

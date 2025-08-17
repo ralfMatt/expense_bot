@@ -386,7 +386,7 @@ async function addExpense(name, amount, categoryId, userId, date = null) {
     if (categoriesResponse.data.values) {
       const categoryRow = categoriesResponse.data.values.find(row => row[0] == categoryId);
       if (categoryRow && categoryRow[1]) {
-        categoryName = `${categoryRow[1]} ${categoryRow[2] || ''}`.trim();
+        categoryName = categoryRow[1];
       }
     }
     
